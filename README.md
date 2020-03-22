@@ -1,2 +1,2 @@
 # friend-hour
-Mod 2 project - Happy hours (and restaurant nights), with friends!
+Happy hours (and restaurant nights), with friends! - Our mod2 project
