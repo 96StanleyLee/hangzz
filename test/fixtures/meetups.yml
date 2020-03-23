@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  group: one
+  location: one
+  status: 1
+  date: 2020-03-23 14:23:29
+
+two:
+  group: two
+  location: two
+  status: 1
+  date: 2020-03-23 14:23:29
