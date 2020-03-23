@@ -8,10 +8,9 @@
 	<div class="col s1"></div>
 	<div class="col s4">
 		<h5>Who's coming?</h5>
-		<br />
-		<h6><b><%= link_to @meetup.group.name, group_path(@meetup.group) %></b></h6>
+		<p><b><%= link_to @meetup.group.name, group_path(@meetup.group) %></b></p>
 		<p>
-			<% @meetup.group.users.each do |member| %>
+			<% @meetup.group.members.each do |member| %>
 				<%= member.name %><br />
 			<% end %>
 		</p>
