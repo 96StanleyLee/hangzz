@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col s7">
+		<h5><%= @group.name %></h5>
+		<p><b>Our upcoming meetups</b></p>
+		<ol>
+			<% @group.meetups.each do |meetup| %>
+				<li>
+					<%= link_to "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}", meetup %>
+				</li>
+			<% end %>
+		</ol>
+	</div>
+	<div class="col s1"></div>
+	<div class="col s4">
+		<h5>&nbsp;</h5>
+		<p><b>Members</b></p>
+		<p>
+			<% @group.members.each do |member| %>
+				<%= member.name %><br />
+			<% end %>
+		</p>
+	</div>
+</div>
