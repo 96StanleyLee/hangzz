@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col s7">
+		<h5>Meetup Details</h5>
+		<p>Date: <%= @meetup.date.strftime("%A, %B %d") %></p>
+		<p>Location: <%= link_to @meetup.location.name, location_path(@meetup.location) %></p>
+		<p>Average Time Added to Commute: 15 minutes</p>
+	</div>
+	<div class="col s1"></div>
+	<div class="col s4">
+		<h5>Who's coming?</h5>
+		<br />
+		<h6><b><%= link_to @meetup.group.name, group_path(@meetup.group) %></b></h6>
+		<p>
+			<% @meetup.group.users.each do |member| %>
+				<%= member.name %><br />
+			<% end %>
+		</p>
+	</div>
+</div>
