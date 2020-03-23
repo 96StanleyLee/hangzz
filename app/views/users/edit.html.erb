@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col s8">
+		<h4>My User Details</h4>
+		<br />
+		<%= form_for @user do |f| %>
+			<div class="input-field ">
+				<%= f.text_field :email, disabled: true %>
+				<%= f.label :email %>
+			</div>
+			<div class="input-field ">
+				<%= f.text_field :name %>
+				<%= f.label :name %>
+			</div>
+			<div class="input-field ">
+				<%= f.text_field :home_address %>
+				<%= f.label :home_address %>
+			</div>
+			<div class="input-field ">
+				<%= f.text_field :work_address %>
+				<%= f.label :work_address %>
+			</div>
+			<%= f.submit %>
+		<% end %>
+	</div>
+	<div class="col s4">
+		<br />
+		<a class="right waves-effect waves-light btn">Log Out</a>
+	</div>
+</div>
