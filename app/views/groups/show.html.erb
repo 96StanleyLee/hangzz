@@ -5,7 +5,7 @@
 		<ol>
 			<% @group.meetups.each do |meetup| %>
 				<li>
-					<%= link_to "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}", group_meetup_path(meetup) %>
+					<%= link_to "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}", group_meetup_path(@group, meetup) %>
 				</li>
 			<% end %>
 		</ol>
