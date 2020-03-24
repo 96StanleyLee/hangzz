@@ -6,12 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all
-Group.destroy_all
-Membership.destroy_all
-Location.destroy_all
-LocationType.destroy_all
-Meetup.destroy_all
 
 user1 = User.create(name: "Stanley Lee", 
 					home_address: "4726 162ndst, Flushing, NY 11358", 
@@ -65,19 +59,19 @@ group3 = Group.create(name: 'Bedstuy Friends')
 Membership.create(group: group1, user: user1)
 Membership.create(group: group1, user: user3)
 Membership.create(group: group1, user: user5)
-Membership.create(group: group1, user: user7)
-Membership.create(group: group1, user: user9)
+# Membership.create(group: group1, user: user7)
+# Membership.create(group: group1, user: user9)
 Membership.create(group: group1, user: user11)
 Membership.create(group: group2, user: user1)
 Membership.create(group: group2, user: user4)
-Membership.create(group: group2, user: user8)
+# Membership.create(group: group2, user: user8)
 Membership.create(group: group2, user: user10)
 Membership.create(group: group2, user: user2)
-Membership.create(group: group2, user: user3)
+# Membership.create(group: group2, user: user3)
 Membership.create(group: group2, user: user7)
 Membership.create(group: group2, user: user9)
 Membership.create(group: group2, user: user6)
-Membership.create(group: group3, user: user6)
+# Membership.create(group: group3, user: user6)
 Membership.create(group: group3, user: user2)
 Membership.create(group: group3, user: user11)
 
