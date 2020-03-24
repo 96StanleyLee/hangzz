@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_182813) do
+ActiveRecord::Schema.define(version: 2020_03_24_003604) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_182813) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "average_additional_commute_time"
     t.index ["group_id"], name: "index_meetups_on_group_id"
     t.index ["location_id"], name: "index_meetups_on_location_id"
   end
