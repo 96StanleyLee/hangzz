@@ -15,11 +15,18 @@
     <nav class="light-blue darken-3">
       <div class="container">
         <div class="nav-wrapper">
-          <%= link_to 'Friend Hour', user_path(@user), {class: 'brand-logo left'} %>
-          <ul id="nav-mobile" class="right">
-            <li><%= link_to 'Home', user_path(@user) %></li>
-            <li><%= link_to @user.name, edit_user_path(@user) %></li>
-          </ul>
+          <%= link_to 'Friend Hour', root_path, {class: 'brand-logo left'} %>
+            <ul id="nav-mobile" class="right">
+                  <% if logged_in? %>
+                    <li><%= link_to 'Home', user_path(@user) %></li>
+                    <li><%= link_to @user.name, edit_user_path(@user) %></li>
+                  <% elsif request.env['PATH_INFO'] == '/login' %>
+                    <li><%= link_to 'Create New User', register_path %></li>
+                  <% elsif request.env['PATH_INFO'] == '/register' %>
+                    <li><%= link_to 'Login', login_path %></li>  
+                  <% end %>
+            </ul>
+          
         </div>
       </div>
     </nav>
@@ -29,7 +36,9 @@
     <script>
       $(document).on('turbolinks:load', function(){
         $('select').formSelect();
-        $('.datepicker').datepicker();
+        var elems = document.querySelectorAll('.datepicker');
+        var options = {format: 'yyyy-mm-dd'}
+        M.Datepicker.init(elems, options);
         M.updateTextFields();
       });
     </script>
