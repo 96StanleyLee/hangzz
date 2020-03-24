@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col s8">
+		<h4>Create a New User</h4>
+		<br />
+		<%= form_for @user do |f| %>
+			<div class="input-field ">
+				<%= f.text_field :email %>
+				<%= f.label :email %>
+			</div>
+			<div class="input-field ">
+				<%= f.password_field :password %>
+				<%= f.label :password %>
+			</div>
+			<div class="input-field ">
+				<%= f.text_field :name %>
+				<%= f.label :name, 'Choose a Display Name (you can change this later)' %>
+			</div>
+			<%= f.submit %>
+		<% end %>
+	</div>
+	<div class="col s4">
+	</div>
+</div>

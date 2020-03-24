@@ -1,27 +1,40 @@
 class UsersController < ApplicationController
 
+	skip_before_action :authorized, only: [:new, :create]
+
 	def index
-		set_user_instance
 		redirect_to user_path(@user)
 	end
 
-    def show
-        set_user_instance
+	def new 
+		@user = User.new
 	end
 
+	def create
+		@user = User.new(strong_params(:email, :password, :name))
+		if @user.save
+			session[:user_id] = @user.id
+			redirect_to root_path
+		else
+			redirect_to new_user_path
+		end
+	end
+
+	def show
+		@hello_messages = ['What beliefs do you carry that may be holding you back?','What’s your hobby?','What’s your talent?','Who do you like to work with?','Where do you enjoy working?','What are your passions?','How can you turn your passions into work?','What inspires you?','How do you motivate yourself to take action?','What do you dream about?','What have you overcome?','How do you respond to what others say about you?','Why are you here?','What are your weaknesses?','What are your goals?','How do you plan on accomplishing your goals?','What are you grateful for?','How can you make yourself better?','How can you make the world better?','What good shall we do today?']
+    end
+
 	def edit
-		set_user_instance
 	end
 
 	def update
-		set_user_instance
-		@user.update(strong_params)
+		@user.update(strong_params(:name, :home_address, :work_address))
 		redirect_to edit_user_path(@user)
 	end
 
 	private
 
-	def strong_params
-		params.require(:user).permit(:name, :home_address, :work_address)
+	def strong_params(*args)
+		params.require(:user).permit(*args)
 	end
 end
