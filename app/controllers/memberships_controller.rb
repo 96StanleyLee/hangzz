@@ -9,8 +9,14 @@ class MembershipsController < ApplicationController
     end 
 
     def create 
+        @group = Group.find(params[:membership][:group_id])
+        Membership.create(user_id: params[:user_id], group_id: params[:membership][:group_id])
+        redirect_to @group
     end 
 
+    def delete
+        Membership.destroy(params[:id])
+    end
 
 
     private 
@@ -18,4 +24,5 @@ class MembershipsController < ApplicationController
     def strong_params
         params.restrict(:membership).permit(:user_id,:group_id)
     end 
+
 end
