@@ -5,10 +5,12 @@
 		<ol>
 			<% @group.meetups.each do |meetup| %>
 				<li>
-					<%= link_to "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}", meetup %>
+					<%= link_to "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}", group_meetup_path(meetup) %>
 				</li>
 			<% end %>
 		</ol>
+		<br />
+		<%= link_to 'Create a New Meetup', new_group_meetup_path(@group), class: 'waves-effect waves-light btn' %>
 	</div>
 	<div class="col s1"></div>
 	<div class="col s4">
