@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
 
+  # homepage
   root to: 'users#index'
 
+  # alias rout for creating a new user
+  get '/register', to: 'users#new'
+  
+  # routes for logging in and out
+  get '/login', to: 'sessions#new'
+  post '/sessions', to: 'sessions#create'
+  delete '/sessions', to: 'sessions#destroy'
+
+  # standard routes
   resources :location_types
   resources :locations
-  # TODO: Nest meetup routes under groups.
+
+  # nested routes
   resources :groups do 
     resources :meetups
   end 
-
   resources :users do 
     resources :memberships, only: [:new, :create, :delete]
   end 
