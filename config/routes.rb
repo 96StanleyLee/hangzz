@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  root to: 'users#show'
+  root to: 'users#index'
 
   resources :location_types
   resources :locations
-  resources :meetups
   # TODO: Nest meetup routes under groups.
-  resources :groups
+  resources :groups do 
+    resources :meetups
+  end 
 
   resources :users do 
     resources :memberships, only: [:new, :create, :delete]
