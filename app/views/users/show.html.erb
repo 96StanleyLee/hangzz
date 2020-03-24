@@ -7,7 +7,7 @@
 				<ol>
 				<% group.meetups.each do |meetup| %>
 					<li>
-						<%= link_to "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}", group_meetup_path(meetup) %>
+						<%= link_to "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}", group_meetup_path(group,meetup) %>
 					</li>
 				<% end %>
 				</ol>
@@ -28,4 +28,4 @@
 	</div>
 </div>
 <br />
-<p><i>Hello, <%= @user.name.split(' ')[0] %>! What good shall we do today?</i></p>
+<p><i>Hello, <%= @user.name.split(' ')[0] %>! <%= @hello_messages.sample %></i></p>
