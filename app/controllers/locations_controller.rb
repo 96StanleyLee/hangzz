@@ -1,6 +1,5 @@
 class LocationsController < ApplicationController
 	def show
-		set_user_instance
 		set_instance
 	end
 
