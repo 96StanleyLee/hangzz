@@ -25,18 +25,19 @@ class MeetupsController < ApplicationController
 		#perhaps implement friendlyID, along google maps embedded maps.
 		
 	def new 
-		set_instance
+		@meetup = Meetup.new
 	end
 
 	def create
 		set_instance
-		@locations = @meetup.maps_api_call(params[:group_id]).sort_by {|k,v| v}.first(5)
+		@locations = @meetup.maps_api_call(params[:group_slug]).sort_by {|k,v| v}.first(5)
 		prime_location = @locations.first
-		time = (prime_location[1] / Group.find(params[:group_id]).members.count) * 1.0
-		time = time.round(1)
+		group = Group.find_by_slug(params[:group_slug])
+		time = (prime_location[1] / group.members.count.to_f)
+
 		@meetup = Meetup.create(
-			group_id: params[:group_id], 
-			location_id: prime_location[0].id, 
+			group: group, 
+			location: prime_location[0], 
 			date: params[:meetup][:date], 
 			average_additional_commute_time: time
 			)
@@ -61,8 +62,8 @@ class MeetupsController < ApplicationController
 	private
 
 	def set_instance
-		if params[:id]
-			@meetup = Meetup.find(params[:id])
+		if params[:slug] #needs to be friendly-ish
+			@meetup = Meetup.friendly.find_by_slug(params[:slug])
 		else
 			@meetup = Meetup.new
 		end

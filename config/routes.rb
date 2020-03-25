@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   resources :locations
 
   # nested routes
-  resources :groups do 
-    resources :meetups
+  resources :groups, param: :slug do 
+    resources :meetups, param: :slug
   end 
   resources :users do 
     resources :memberships, only: [:new, :create, :delete]

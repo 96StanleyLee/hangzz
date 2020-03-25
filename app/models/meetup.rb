@@ -1,11 +1,20 @@
 class Meetup < ApplicationRecord
+
+	extend FriendlyId
+		friendly_id :date, use: :slugged
 	
 	enum status: { pending: 0, confirmed: 1}
 	belongs_to :group
 	belongs_to :location
 
-	def maps_api_call(group_id)	
-		group = Group.find(group_id)
+
+
+	def slug_candidates
+		"#{:date} #{Location.find(:location_id).name}"
+	   end
+
+	def maps_api_call(group_slug)	
+		group = Group.friendly.find_by_slug(group_slug)
 		locations = Location.all 
 		
 		output_hash = {}
