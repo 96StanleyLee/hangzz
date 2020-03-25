@@ -3,7 +3,7 @@
 		<h5>Meetup Details</h5>
 		<p>Date: <%= @meetup.date.strftime("%A, %B %d") %></p>
 		<p>Location: <%= link_to @meetup.location.name, location_path(@meetup.location) %></p>
-		<p>Average Time Added to Commute: 15 minutes</p>
+		<p>Average Time Added to Commute: <%= @time%> minutes.</p>
 	</div>
 	<div class="col s1"></div>
 	<div class="col s4">

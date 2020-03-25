@@ -1,0 +1,14 @@
+
+<h4> Your current meetup location is <%= @meetup.location.name %> </h4>
+<h4> The status of said meetup is currently <%= @meetup.status %> </h4>
+
+
+<% if @locations %>
+	<ol>
+		<% @locations.each do |location| %>
+			<li>Name: <%= location[0].name %>
+				Time: <%= location[1]%> Minutes</li>
+		<% end %>
+	</ol>
+<% end %>
+

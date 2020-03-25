@@ -1,43 +1,50 @@
 class Meetup < ApplicationRecord
-  enum status: { pending: 0, confirmed: 1}
-  belongs_to :group
-  belongs_to :location
+	
+	enum status: { pending: 0, confirmed: 1}
+	belongs_to :group
+	belongs_to :location
 
+	def maps_api_call(group_id)	
+		group = Group.find(group_id)
+		locations = Location.all 
+		
+		output_hash = {}
 
-#   def location_select
-#     locations = Location.all
-#     group_members = Group.find(params[:group_id]).members
+		group_original_commute_times = {}
+		group.members.each do |member|
+			group_original_commute_times[member] = original_commute_time(member.work_address, member.home_address)
+		end
 
-#     output_array = []
+		locations.each do |location|
+			commute_difference = 0
+			group.members.each do |member|
+				new_commute = new_commute_time(member.work_address, location.address, member.home_address)
+				original_commute = group_original_commute_times[member]
+				commute_difference += new_commute - original_commute
+			end
+			output_hash[location] = commute_difference
+		end
+		output_hash
+  	end
 
-#     location.each do |location|
-            
-#       #calculates all the time added for this location for these members
-#       #time_accumulated = 0 
-#       group_members.each do |member|
-#         # original_commute_time =  api_call(work_address, home_address)
-#         # commute_time_with_meetup = api_call(work_address, location.address, home_address)
-#         # time_accumulated += (commute_time_with_meetup - original_commute_time)
-#       end 
-      
-#       output_array.push({
-#         location: location, 
-#         added_commute_time: time_accumulated
-#       })
-      
-#     end
+  	def new_commute_time(work_address, meetup_address, home_address)
+		response = RestClient.get("https://maps.googleapis.com/maps/api/directions/json?&origin=#{work_address}&waypoints=via:#{meetup_address}&destination=#{home_address}&key=#{gmaps_api_key}")
+		parsed = JSON.parse(response.body)
+		commute_time = parsed["routes"][0]["legs"][0]["duration"]["text"].to_i
+	end
 
-#     output_array.sort_by{|location| location['added_commute_time'] }.reverse.take(5)
-#   end
-# end
+	def original_commute_time(work_address, home_address)
+		request_url = "https://maps.googleapis.com/maps/api/directions/json?&origin=#{work_address}&destination=#{home_address}&key=#{gmaps_api_key}"
+		response = RestClient.get(request_url)
+		parsed = JSON.parse(response.body)
+		commute_time = parsed["routes"][0]["legs"][0]["duration"]["text"].to_i
+	end
 
+	private
 
-def maps_api_call_test
-  start_address = User.first.work_address
-  waypoints = [Location.first.address]
-  end_address = User.first.home_address
-
-  original_commute_time = ''
+	def gmaps_api_key
+		Rails.application.credentials.gmaps[:api_key]
+	end
 
 end
 
