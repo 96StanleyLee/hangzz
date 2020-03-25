@@ -4,13 +4,22 @@
 		<ul>
 			<% @user.groups.each do |group| %>
 				<h5><%= group.name%></h5>
-				<ol>
-				<% group.meetups.each do |meetup| %>
-					<li>
-						<%= link_to "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}", group_meetup_path(group, meetup) %>
-					</li>
+				<% group.meetups.first(3).each do |meetup| %>
+					<div class="card horizontal">
+						<div class="card-image">
+							<img src="https://lh5.googleusercontent.com/p/AF1QipO0lQZzkbLIjulFFao737QyGg9GCsB6dWlNUduH=w81-h81-n-k-no">
+						</div>
+						<div class="card-stacked">
+							<div class="card-content">
+								<p><%= "#{meetup.date.strftime("%A, %B %d")} at #{meetup.location.name}" %></p>
+							</div>
+							<div class="card-action">
+								<%= link_to 'View Details', group_meetup_path(group, meetup) %>
+							</div>
+						</div>
+					</div>
+					<br />
 				<% end %>
-				</ol>
 			<%end%>
 		</ul>
 	</div>
