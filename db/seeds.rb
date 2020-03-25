@@ -98,8 +98,8 @@ location3 = Location.create(address: "310 W 40th St, New York, NY 10018",
                             location_type: location_type2
                             )
 
-location4 = Location.create(address: "108 Patchen Ave, Brooklyn, NY 11221", 
-                            name: "The Wilky",
+location4 = Location.create(address: "722 Nostrand Ave, Brooklyn, NY 11216", 
+                            name: "Super Power",
                             price_in_dollar_signs: 2,
                             location_type: location_type2
                             )
