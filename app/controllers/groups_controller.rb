@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
 	def show
 		set_instance
-
 	end
 
 	private

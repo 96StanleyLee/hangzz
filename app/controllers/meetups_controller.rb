@@ -33,7 +33,7 @@ class MeetupsController < ApplicationController
 		@locations = @meetup.maps_api_call(params[:group_slug]).sort_by {|k,v| v}.first(5)
 		prime_location = @locations.first
 		group = Group.find_by_slug(params[:group_slug])
-		time = (prime_location[1] / group.members.count.to_f)
+		time = (prime_location[1])
 
 		@meetup = Meetup.create(
 			group: group, 
@@ -55,14 +55,27 @@ class MeetupsController < ApplicationController
 	end
 
 	def destroy
-		Meetup.destroy(params[:id])
-		redirect_to group_path(params[:group][:id])
+		set_instance
+		group = @meetup.group
+		@meetup.destroy
+		redirect_to group_path(group)
 	end
+
+
+	def update
+		set_instance
+		@meetup.slug = nil
+		location = JSON.parse(params[:meetup][:location_id])
+		@meetup.update(location_id: location[0], average_additional_commute_time: location[1], status: 1)
+		redirect_to group_meetup_path(@meetup.group, @meetup)
+	end 
+
+
 
 	private
 
 	def set_instance
-		if params[:slug] #needs to be friendly-ish
+		if params[:slug]
 			@meetup = Meetup.friendly.find_by_slug(params[:slug])
 		else
 			@meetup = Meetup.new

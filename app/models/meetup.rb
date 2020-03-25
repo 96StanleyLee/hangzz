@@ -31,7 +31,7 @@ class Meetup < ApplicationRecord
 				original_commute = group_original_commute_times[member]
 				commute_difference += new_commute - original_commute
 			end
-			output_hash[location] = commute_difference
+			output_hash[location] = commute_difference / group.members.count.to_f
 		end
 		output_hash
   	end
@@ -48,6 +48,13 @@ class Meetup < ApplicationRecord
 		parsed = JSON.parse(response.body)
 		commute_time = (parsed["routes"][0]["legs"][0]["duration"]["value"].to_f/60)
 	end
+
+	def all
+		Meetup.where('status like 1')
+	end
+
+	
+		
 
 	private
 

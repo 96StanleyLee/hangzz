@@ -11,4 +11,8 @@ class Group < ApplicationRecord
 	def members
 		self.users
 	end
+
+	def meetups
+		Meetup.where('status = 1 AND group_id = ?', self.id)
+	end
 end

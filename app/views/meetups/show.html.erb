@@ -7,15 +7,16 @@
 
 		<% if @locations %>
 			<h5>Please select a location:</h5>
-			<ol>
+			<%= form_for [@meetup.group, @meetup] do |f| %>
 				<% @locations.each do |location| %>
-					<li>
-						<%= location[0].name %>
-						- Avg Addl Time:
-						<%= location[1] %> mins
-					</li>
+					<p><label>
+						<%= f.radio_button :location_id, "[#{location[0].id},#{location[1]}]", class: 'with-gap'	%>
+						<span><%= "#{location[0].name} - #{location[1].round} minutes " %></span>
+					</label></p>
 				<% end %>
-			</ol>
+				<%= f.submit "Meetup!"%>
+			<% end %>
+
 		<% end %>
 	</div>
 	
@@ -27,6 +28,10 @@
 			<% @meetup.group.members.each do |member| %>
 				<%= member.name %><br />
 			<% end %>
+		</p>
+		<br />
+		<p>
+			<%= button_to 'Cancel Meetup', group_meetup_path(@meetup.group, @meetup), method: :delete, class: 'left waves-effect waves-light btn janky-css' %>
 		</p>
 	</div>
 </div>
