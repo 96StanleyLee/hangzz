@@ -17,7 +17,7 @@ class Meetup < ApplicationRecord
 
 		locations.each do |location|
 			commute_difference = 0
-			group.members.each do |member|
+			group.members.each do |member|	
 				new_commute = new_commute_time(member.work_address, location.address, member.home_address)
 				original_commute = group_original_commute_times[member]
 				commute_difference += new_commute - original_commute
@@ -30,14 +30,14 @@ class Meetup < ApplicationRecord
   	def new_commute_time(work_address, meetup_address, home_address)
 		response = RestClient.get("https://maps.googleapis.com/maps/api/directions/json?&origin=#{work_address}&waypoints=via:#{meetup_address}&destination=#{home_address}&key=#{gmaps_api_key}")
 		parsed = JSON.parse(response.body)
-		commute_time = parsed["routes"][0]["legs"][0]["duration"]["text"].to_i
+		commute_time = (parsed["routes"][0]["legs"][0]["duration"]["value"].to_f/60)
 	end
 
 	def original_commute_time(work_address, home_address)
 		request_url = "https://maps.googleapis.com/maps/api/directions/json?&origin=#{work_address}&destination=#{home_address}&key=#{gmaps_api_key}"
 		response = RestClient.get(request_url)
 		parsed = JSON.parse(response.body)
-		commute_time = parsed["routes"][0]["legs"][0]["duration"]["text"].to_i
+		commute_time = (parsed["routes"][0]["legs"][0]["duration"]["value"].to_f/60)
 	end
 
 	private
