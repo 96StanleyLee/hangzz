@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
 
-	helper_method :logged_in?, :current_user
-	
+	helper_method :logged_in?, :current_user, :gmaps_api_key
+
 	before_action :authorized
 	before_action :current_user
 
 	private
+
+	
 
 	def current_user
 		if session[:user_id]
@@ -21,4 +23,9 @@ class ApplicationController < ActionController::Base
 	def logged_in?
 		!!current_user
 	end
+
+	def gmaps_api_key
+		Rails.application.credentials.gmaps[:api_key]
+	end
+	
 end
