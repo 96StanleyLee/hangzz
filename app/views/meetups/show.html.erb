@@ -32,15 +32,17 @@
 </div>
 <script>
 	$(document).on('turbolinks:load', function(){
-		// Correct the URL when loading this view via 'render' rather
-		// 		than a traditional GET request.
-		
-		const state = {
-			group_slug: '<%= @meetup.group.slug %>',
-			meetup_slug: '<%= @meetup.slug %>'
+		var pattern = new RegExp("\/groups\/.+\/meetups")
+		if (pattern.test(window.location.pathname)) {
+			// Correct the URL when loading this view via 'render' rather
+			// 		than a traditional GET request.			
+			const state = {
+				group_slug: '<%= @meetup.group.slug %>',
+				meetup_slug: '<%= @meetup.slug %>'
+			}
+			const title = 'Friend Hour!'
+			const url = '/groups/'+state.group_slug+'/meetups/'+state.meetup_slug
+			history.pushState(state, title, url);
 		}
-		const title = 'Friend Hour!'
-		const url = '/groups/'+state.group_slug+'/meetups/'+state.meetup_slug
-		history.pushState(state, title, url);
 	});
 </script>
