@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password
+	extend FriendlyId
+  		friendly_id :name, use: :slugged
 	
 	has_many :memberships
 	has_many :groups, through: :memberships

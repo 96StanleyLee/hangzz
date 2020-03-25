@@ -11,7 +11,7 @@ class Meetup < ApplicationRecord
 
 	def slug_candidates
 		"#{:date} #{Location.find(:location_id).name}"
-	   end
+	end
 
 	def maps_api_call(group_slug)	
 		group = Group.friendly.find_by_slug(group_slug)

@@ -6,6 +6,6 @@ class LocationsController < ApplicationController
 	private
 
 	def set_instance
-		@location = Location.find(params[:id])
+		@location = Location.friendly.find_by_slug(params[:slug])
 	end	
 end

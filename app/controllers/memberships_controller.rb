@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
     
     def new
-        @user = User.find(params[:user_id])
+        @user = User.find_by_slug(params[:slug])
         @group_list = Group.all.select do |group|
             !@user.groups.include?(group)
         end     

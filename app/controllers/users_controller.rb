@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
+		@user.slug = nil 
 		@user.update(strong_params(:name, :home_address, :work_address))
 		redirect_to edit_user_path(@user)
 	end

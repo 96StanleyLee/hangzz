@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # standard routes
   resources :location_types
-  resources :locations
+  resources :locations, param: :slug
 
   # nested routes
   resources :groups, param: :slug do 
