@@ -1,7 +1,7 @@
 class Meetup < ApplicationRecord
 
 	extend FriendlyId
-		friendly_id :date, use: :slugged
+		friendly_id :slug_candidates, use: :slugged
 	
 	enum status: { pending: 0, confirmed: 1}
 	belongs_to :group
@@ -10,7 +10,7 @@ class Meetup < ApplicationRecord
 
 
 	def slug_candidates
-		"#{:date} #{Location.find(:location_id).name}"
+		["#{self.date.strftime("%F")}-#{self.location.name}-#{self.group.name}"]
 	end
 
 	def maps_api_call(group_slug)	
