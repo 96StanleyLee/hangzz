@@ -21,3 +21,9 @@
 .homepage-meetup-link *{
 	color: rgba(0,0,0,0.87);
 }
+
+.footer-copyright a{
+	color: white;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+}
