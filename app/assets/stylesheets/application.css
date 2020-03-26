@@ -17,3 +17,7 @@
 .main-content{
 	min-height: calc(100vh - 120px);
 }
+
+.homepage-meetup-link *{
+	color: rgba(0,0,0,0.87);
+}
