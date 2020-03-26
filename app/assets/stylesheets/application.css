@@ -40,3 +40,11 @@
 .janky-white-text input{
 	color: white;
 }
+
+.map-loading{
+	position: relative;
+    top: -40vh;
+    text-align: center;
+    width: 100%;
+    z-index: -1;
+}
