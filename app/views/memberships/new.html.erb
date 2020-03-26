@@ -1,13 +1,28 @@
-<h4> Join a Group </h4>
-
-<%= form_for [@user,@membership] do |f| %>
-  <div class="input-field col s12">
-  <% if @group_list.empty? %>
-    <%= f.collection_select :group_id, @group_list, :id, :name,{:prompt => 'There are no groups to join'}%>
-  <% else%>
-        <%= f.collection_select :group_id, @group_list, :id, :name,{:prompt => 'Please select a group'}%>
-          <%= f.submit "Join Group" %>
-  <% end %>
+<div class="row">
+  <div class="col s7">
+    <h4> Join a Group </h4>
+    <%= form_for [@user,@membership] do |f| %>
+      <div class="input-field col s12">
+        <% if @group_list.empty? %>
+          <%= f.collection_select :group_id, @group_list, :id, :name,{:prompt => 'There are no groups to join'}%>
+        <% else%>
+          <%= f.collection_select :group_id, @group_list, :id, :name,{:prompt => 'Please select a group'}%>
+          <br />
+          <div class="janky-css janky-white-text"><%= f.submit "Join Group", class: 'btn waves-effect waves-light' %></div>
+        <% end %>
+      </div>
+    <% end %>  
   </div>
+  <div class="col s5 right-align">
+  	<h5>My Current Groups</h5>
+		<ul>
+			<% @user.groups.each do |group| %>
+				<li>
+					<%= link_to group.name, group %>
+				</li>
+			<% end %>
+		</ul>
+  </div>
+</div>
 
-<% end %>
+
