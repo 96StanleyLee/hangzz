@@ -78,6 +78,7 @@
         var elems = document.querySelectorAll('.datepicker');
         var options = {format: 'yyyy-mm-dd', onClose: datePickerClosed}
         M.Datepicker.init(elems, options);
+        $('.materialboxed').materialbox();
         M.updateTextFields();
 
         <% flash.each do |type, message| %>
@@ -99,6 +100,13 @@
           M.toast({html: 'Address copied to clipboard!'})
         }
       }
+
+      function datePickerClosed(){
+        if (document.querySelector('.datepicker').value !== ''){
+          document.querySelector('#dateButton').innerHTML = buttonText.dateSelected
+          $('#dateButton').removeClass('disabled')
+        }
+      }      
 
       function fallbackCopyTextToClipboard(text) {
         var textArea = document.createElement("textarea");

@@ -28,10 +28,4 @@
 		$('#dateButton').addClass('disabled')
 		$('.show-while-loading').removeClass('hide')
 	})
-	function datePickerClosed(){
-		if (document.querySelector('.datepicker').value !== ''){
-			document.querySelector('#dateButton').innerHTML = buttonText.dateSelected
-			$('#dateButton').removeClass('disabled')
-		}
-	}
 </script>
