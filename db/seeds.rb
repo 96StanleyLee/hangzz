@@ -158,7 +158,7 @@ location10 = Location.create(address: "337 3rd Ave, New York, NY 10010",
                             name: "AWOL Bar & Grill",
                             price_in_dollar_signs: 2,
                             location_type: location_type2,
-							file: "awolbar&grill.jpeg"
+							file: "awolbar_grill.jpeg"
 							)
 
 location11 = Location.create(address: "294 3rd Ave, New York, NY 10010", 
