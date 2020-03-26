@@ -15,7 +15,7 @@ class Meetup < ApplicationRecord
 
 	def maps_api_call(group_slug)	
 		group = Group.friendly.find_by_slug(group_slug)
-		locations = Location.all 
+		locations = Location.all.sample(10)
 		
 		output_hash = {}
 
