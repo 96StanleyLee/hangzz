@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_173055) do
+ActiveRecord::Schema.define(version: 2020_03_26_154652) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_03_25_173055) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.string "file"
     t.index ["location_type_id"], name: "index_locations_on_location_type_id"
     t.index ["slug"], name: "index_locations_on_slug", unique: true
   end
