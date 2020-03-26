@@ -1,11 +1,37 @@
 <div class="row">
 	<div class="col s7">
 		<h5>Meetup Details</h5>
-		<p>Date: <%= @meetup.date.strftime("%A, %B %d") %></p>
-		<p>Map of Location: <%= link_to @meetup.location.name, location_path(@meetup.location) %></p>
-		<p>Average Time Added to Commute: <%= @meetup.average_additional_commute_time.round(1)%> minutes.</p>
-		<p>Category: <%= @meetup.location.location_type.category%></p>
-		<%= image_tag @meetup.location.file, class: 'responsive-img materialboxed' %>
+		<br />
+		<div class="card">
+			<div class="card-image">
+				<%= image_tag @meetup.location.file, class: 'responsive-img materialboxed' %>
+				<span class="card-title"><%= @meetup.location.name %></span>
+			</div>
+			<div class="card-content">
+				<p>Category: <%= @meetup.location.location_type.category%></p>
+				<p>Date: <%= @meetup.date.strftime("%A, %B %d") %></p>
+				<p>Get Directions: <%= link_to @meetup.location.address, location_path(@meetup.location) %></p>
+				<br />
+				<p><%= @meetup.average_additional_commute_time.round(1)%> minutes added to commute, on average</p>
+			</div>
+			<div class="card-action" style="min-height: 55px;">
+				<%= link_to 'Cancel Meetup', '#cancellationModal', class: 'right modal-trigger' %>
+			</div>
+		</div>
+
+
+<div id="cancellationModal" class="modal">
+	<div class="modal-content">
+		<h4>Are you sure?</h4>
+		<p>Cancelling this meetup will delete it immediately - there is no undo.</p>
+		<p>To keep this meetup and *not* cancel, just click away or press escape.</p>
+	</div>
+	<div class="modal-footer">
+		<%= button_to 'Cancel this meetup', group_meetup_path(@meetup.group, @meetup), method: :delete, class: 'modal-close waves-effect waves-green btn-flat inline-form janky-css' %>
+	</div>
+</div>
+
+		
 
 		<% if @locations %>
 			<h5>Please select a location:</h5>
@@ -30,10 +56,6 @@
 			<% @meetup.group.members.each do |member| %>
 				<%= member.name %><br />
 			<% end %>
-		</p>
-		<br />
-		<p>
-			<%= button_to 'Cancel Meetup', group_meetup_path(@meetup.group, @meetup), method: :delete, class: 'left waves-effect waves-light btn janky-css' %>
 		</p>
 	</div>
 </div>

@@ -27,3 +27,16 @@
     font-weight: 500;
     letter-spacing: 0.1px;
 }
+
+.inline-form{
+	display: inline-block;
+}
+
+.janky-css input{
+	cursor: pointer;
+	height: 100%;
+    width: 100%;
+}
+.janky-white-text input{
+	color: white;
+}

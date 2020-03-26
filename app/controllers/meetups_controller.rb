@@ -65,6 +65,13 @@ class MeetupsController < ApplicationController
 		redirect_to group_meetup_path(@meetup.group, @meetup)
 	end 
 
+	def destroy
+		set_instance
+		@meetup.destroy
+		@group = @meetup.group
+		redirect_to group_path(@group)
+	end
+
 
 
 	private

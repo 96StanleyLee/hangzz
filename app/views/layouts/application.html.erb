@@ -79,6 +79,8 @@
         var options = {format: 'yyyy-mm-dd', onClose: datePickerClosed}
         M.Datepicker.init(elems, options);
         $('.materialboxed').materialbox();
+        M.Modal._count = 0;
+        $('.modal').modal();
         M.updateTextFields();
 
         <% flash.each do |type, message| %>
