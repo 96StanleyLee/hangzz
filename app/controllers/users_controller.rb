@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 			session[:user_id] = @user.id
 			redirect_to root_path
 		else
+			flash[:alert] = @user.errors.full_messages
 			redirect_to new_user_path
 		end
 	end
@@ -29,8 +30,12 @@ class UsersController < ApplicationController
 
 	def update
 		@user.slug = nil 
-		@user.update(strong_params(:name, :home_address, :work_address))
-		redirect_to edit_user_path(@user)
+		if @user.update(strong_params(:name, :home_address, :work_address))
+			redirect_to edit_user_path(@user)
+		else
+			flash[:alert] = @user.errors.full_messages
+			redirect_to edit_user_path
+		end 
 	end
 
 	private
