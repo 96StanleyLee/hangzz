@@ -27,7 +27,7 @@
 				<%= member.name %><br />
 			<% end %>
 		</p>
-		<%= button_to 'Leave Group', group_path(@group), method: :delete, class: 'left waves-effect waves-light btn janky-css' %>
+		<%= button_to 'Leave Group', user_membership_path(@user, @user.memberships.find_by(group: @group)), method: :delete, class: 'left waves-effect waves-light btn janky-css' %>
 	</div>
 </div>
 

@@ -54,12 +54,7 @@ class MeetupsController < ApplicationController
 		end
 	end
 
-	def destroy
-		set_instance
-		group = @meetup.group
-		@meetup.destroy
-		redirect_to group_path(group)
-	end
+	
 
 
 	def update

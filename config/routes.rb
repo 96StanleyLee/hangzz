@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :meetups, param: :slug
   end 
   resources :users do 
-    resources :memberships, only: [:new, :create, :delete]
+    resources :memberships, only: [:new, :create, :delete, :destroy]
   end 
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -4,6 +4,9 @@
 		<p>Date: <%= @meetup.date.strftime("%A, %B %d") %></p>
 		<p>Location: <%= link_to @meetup.location.name, location_path(@meetup.location) %></p>
 		<p>Average Time Added to Commute: <%= @meetup.average_additional_commute_time.round(1)%> minutes.</p>
+		<p>Category: <%= @meetup.location.location_type.category%></p>
+		<%= image_tag("#{@meetup.location.file}") %>
+
 
 		<% if @locations %>
 			<h5>Please select a location:</h5>

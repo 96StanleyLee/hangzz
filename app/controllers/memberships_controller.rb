@@ -11,8 +11,9 @@ class MembershipsController < ApplicationController
         redirect_to @group
     end 
 
-    def delete
+    def destroy
         Membership.destroy(params[:id])
+        redirect_to root_path
     end
 
 

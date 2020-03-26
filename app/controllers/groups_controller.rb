@@ -5,12 +5,6 @@ class GroupsController < ApplicationController
 
 
 
-	def destroy 
-		set_instance
-		@group.memberships.find_by(user: @user).destroy
-		redirect_to root_path
-	end 
-
 	private
 
 	def set_instance
