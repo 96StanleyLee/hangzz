@@ -7,8 +7,31 @@
 				<%= f.text_field :date, class: 'datepicker' %>
 				<%= f.label :date, 'Select a Date' %>
 			</div>
-			<%= f.submit 'View the best locations' %>
+			<button class="btn waves-effect waves-light disabled" id="dateButton" type="submit" name="action">Select a date first</button>
 		<% end %>
+		<div class="show-while-loading hide">
+			<h4>Connecting to Google Maps to find the optimal result...</h4>
+			<%# Waiting Spinner %><div class="preloader-wrapper big active"> <div class="spinner-layer spinner-blue"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div><div class="spinner-layer spinner-red"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div><div class="spinner-layer spinner-yellow"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div><div class="spinner-layer spinner-green"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>
+		</div>
 	</div>
 	<div class="col s4"></div>
 </div>
+
+<script>
+	const buttonText = {
+		'start': 'Select a date first',
+		'dateSelected': 'Find the best locations',
+		'searching': 'Searching...'
+	}
+	$('#dateButton').click(function(){
+		document.querySelector('#dateButton').innerHTML = buttonText.searching
+		$('#dateButton').addClass('disabled')
+		$('.show-while-loading').removeClass('hide')
+	})
+	function datePickerClosed(){
+		if (document.querySelector('.datepicker').value !== ''){
+			document.querySelector('#dateButton').innerHTML = buttonText.dateSelected
+			$('#dateButton').removeClass('disabled')
+		}
+	}
+</script>

@@ -76,7 +76,7 @@
       $(document).on('turbolinks:load', function(){
         $('select').formSelect();
         var elems = document.querySelectorAll('.datepicker');
-        var options = {format: 'yyyy-mm-dd'}
+        var options = {format: 'yyyy-mm-dd', onClose: datePickerClosed}
         M.Datepicker.init(elems, options);
         M.updateTextFields();
 
