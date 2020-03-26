@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@groups_with_meetups = @user.groups.select{|g| g.meetups.count > 0}
 		@hello_messages = ['What beliefs do you carry that may be holding you back?','What’s your hobby?','What’s your talent?','Who do you like to work with?','Where do you enjoy working?','What are your passions?','How can you turn your passions into work?','What inspires you?','How do you motivate yourself to take action?','What do you dream about?','What have you overcome?','How do you respond to what others say about you?','Why are you here?','What are your weaknesses?','What are your goals?','How do you plan on accomplishing your goals?','What are you grateful for?','How can you make yourself better?','How can you make the world better?','What good shall we do today?']
     end
 
