@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_154652) do
+ActiveRecord::Schema.define(version: 2020_03_27_132543) do
+
+  create_table "commute_differentials", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "location_id", null: false
+    t.float "differential"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_commute_differentials_on_location_id"
+    t.index ["user_id"], name: "index_commute_differentials_on_user_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -85,6 +95,8 @@ ActiveRecord::Schema.define(version: 2020_03_26_154652) do
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
+  add_foreign_key "commute_differentials", "locations"
+  add_foreign_key "commute_differentials", "users"
   add_foreign_key "locations", "location_types"
   add_foreign_key "meetups", "groups"
   add_foreign_key "meetups", "locations"

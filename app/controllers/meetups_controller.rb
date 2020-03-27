@@ -1,40 +1,25 @@
 class MeetupsController < ApplicationController
-	
-	# Guess this one works, test it later after making a meetup
-		#=> cool!
-	#I think we're moving realy quickly, after lunch and making sure this part works should we move into
-	#authentication? Unless theres another thing we're missing out on 
-		#=> depending how much he shows us in this lecture. 
-		#=> i'd rather build it right the first time.
-		#=> ... I've done a lot of janky/shitty implementations of auth in the past, we can
-		#=>		definitely "make it work", but i wanna learn the rails way.
-		#=> 1. We can also implement some nice frontend stuff like:
-		#=>			- maps embeds, dropping pins on them for our locations
-		#=>			- go ahead and build the views for login and register, in advance
-		#=>			- do you want to implement that Flash gem? 
-		#=> 		- Yeah seems easy enough to implement. Are you deciding on using bcrypt?
-		#=>			- Bcrypt looks good to me, yeah. Do you have a preference of another way?
-		#=>			- With the already implemented password= setter in Bcrypt, thats assuming the column name is
-		#=> password_digest, are we thinking of making a custom setter or leaving it as is? 
-		#= > Looking up some docs I see that most people just stick to the default password_digest
-		#=> 2. We can also implement some validations of addresses, show the user a map while they enter their
-		#=>		work/home addresses, to help them confirm that google will interpret it correctly
-
-
-		#Modifying our show page with a edit/delete button/confirm
-		#perhaps implement friendlyID, along google maps embedded maps.
 		
 	def new 
 		@meetup = Meetup.new
 	end
 
 	def create
-		set_instance
-		@locations = @meetup.maps_api_call(params[:group_slug]).sort_by {|k,v| v}.first(5)
-		prime_location = @locations.first
-		group = Group.find_by_slug(params[:group_slug])
-		time = (prime_location[1])
 
+		set_instance
+		group = Group.find_by_slug(params[:group_slug])
+
+		location_average_differentials = {}
+		Location.all.sample(15).each do |location|
+			location_differentials_total = CommuteDifferential.where(user: group.members, location: location).sum(&:differential)
+			location_average_differential = location_differentials_total / group.members.count.to_f
+			location_average_differentials[location] = location_average_differential
+		end
+		
+		@locations = location_average_differentials.sort_by{|k,v| v}.first(5)
+
+		prime_location = @locations.first
+		time = (prime_location[1])
 		@meetup = Meetup.create(
 			group: group, 
 			location: prime_location[0], 
@@ -54,9 +39,6 @@ class MeetupsController < ApplicationController
 		end
 	end
 
-	
-
-
 	def update
 		set_instance
 		@meetup.slug = nil
@@ -71,8 +53,6 @@ class MeetupsController < ApplicationController
 		@group = @meetup.group
 		redirect_to group_path(@group)
 	end
-
-
 
 	private
 

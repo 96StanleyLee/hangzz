@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(strong_params(:email, :password, :name))
 		if @user.save
-			session[:user_id] = @user.id
+			session[:user_id] = @user.id		
 			redirect_to root_path
 		else
 			flash[:alert] = @user.errors.full_messages
@@ -31,7 +31,19 @@ class UsersController < ApplicationController
 
 	def update
 		@user.slug = nil 
-		if @user.update(strong_params(:name, :home_address, :work_address))
+		#if the current params submitted are the same for both home and work
+		if params[:user][:home_address] == @user.home_address && params[:user][:work_address] == @user.work_address
+			if @user.update(strong_params(:name))
+				redirect_to edit_user_path(@user)
+			else
+				flash[:alert] = @user.errors.full_messages
+				redirect_to edit_user_path
+			end 
+		elsif @user.update(strong_params(:name, :home_address, :work_address))
+			# Invalidate old commute differentials
+			CommuteDifferential.where(user: @user).destroy_all
+			# Re-calculate commute differentials
+			CommuteDifferential.calculate
 			redirect_to edit_user_path(@user)
 		else
 			flash[:alert] = @user.errors.full_messages

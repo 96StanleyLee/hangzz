@@ -7,23 +7,57 @@
 				<%= f.text_field :email, disabled: true %>
 				<%= f.label :email %>
 			</div>
-			<div class="input-field ">
+			<div class="input-field edit-watch">
 				<%= f.text_field :name %>
 				<%= f.label :name %>
 			</div>
-			<div class="input-field ">
+			<div class="input-field edit-watch spinner-show-on-save">
 				<%= f.text_field :home_address %>
 				<%= f.label :home_address %>
 			</div>
-			<div class="input-field ">
+			<div class="input-field edit-watch spinner-show-on-save">
 				<%= f.text_field :work_address %>
 				<%= f.label :work_address %>
 			</div>
-			<%= f.submit %>
+			<button class="btn waves-effect waves-light disabled" id="userUpdateButton" type="submit" name="action">Fields above are editable</button>
 		<% end %>
 	</div>
 	<div class="col s4">
 		<br />
-		<%= button_to 'Log Out', logout_path, method: :delete, class: 'right waves-effect waves-light btn janky-css' %>
+		<%= button_to 'Log Out', logout_path, method: :delete, class: 'right waves-effect waves-light btn janky-css janky-white-text' %>
 	</div>
 </div>
+<div class="row">
+	<div class="col s10">
+		<div class="show-while-loading hide" style="width: 100%">
+			<br />
+			<h4>Connecting to Google Maps and re-calculating your commute times... this might take a moment!</h4>
+			<br />
+			<div class="user-address-update-loading">
+				<%# Waiting Spinner %><div class="preloader-wrapper big active"> <div class="spinner-layer spinner-blue"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div><div class="spinner-layer spinner-red"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div><div class="spinner-layer spinner-yellow"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div><div class="spinner-layer spinner-green"> <div class="circle-clipper left"> <div class="circle"></div></div><div class="gap-patch"> <div class="circle"></div></div><div class="circle-clipper right"> <div class="circle"></div></div></div></div>
+			</div>
+		</div>
+	</div>
+	<div class="col s2"></div>
+</div>
+
+<script>
+	const userUpdateButtonText = {
+		'start': 'Fields above are editable',
+		'fieldsEdited': 'Save changes',
+		'saving': 'Saving...'
+	}
+	var showSpinner = false
+	$('.edit-watch').on("change paste keyup", function(event){
+		$('#userUpdateButton').text(userUpdateButtonText.fieldsEdited).removeClass('disabled')
+		if (event.target.parentElement.classList.contains('spinner-show-on-save')){
+			showSpinner = true
+		}
+	})
+	$('#userUpdateButton').click(function(){
+		$('#userUpdateButton').text(userUpdateButtonText.saving).addClass('disabled')
+		if (showSpinner) {
+			$('.show-while-loading').removeClass('hide')
+		}
+	})
+</script>
