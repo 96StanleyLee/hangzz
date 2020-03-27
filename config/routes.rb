@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :commute_differentials
   # homepage
   root to: 'users#index'
 
