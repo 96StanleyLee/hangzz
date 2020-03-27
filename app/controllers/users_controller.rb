@@ -31,11 +31,19 @@ class UsersController < ApplicationController
 
 	def update
 		@user.slug = nil 
-		if @user.update(strong_params(:name, :home_address, :work_address))
+		#if the current params submitted are the same for both home and work
+		if params[:user][:home_address] == @user.home_address && params[:user][:work_address] == @user.work_address
+			if @user.update(strong_params(:name))
+				redirect_to edit_user_path(@user)
+			else
+				flash[:alert] = @user.errors.full_messages
+				redirect_to edit_user_path
+			end 
+		elsif @user.update(strong_params(:name, :home_address, :work_address))
 			# Invalidate old commute differentials
 			CommuteDifferential.where(user: @user).destroy_all
 			# Re-calculate commute differentials
-			CommuteDifferential.calculate	
+			CommuteDifferential.calculate
 			redirect_to edit_user_path(@user)
 		else
 			flash[:alert] = @user.errors.full_messages
