@@ -2,10 +2,14 @@
 	<div class="col s7">
 		<h4>My Upcoming Meetups</h4>
 		<ul>
+			
 			<% @groups_with_meetups.each do |group| %>
+				<%group = group.meetups.where('date > ?', Time.now)%>		
+
+				
 				<ul class="collection with-header">
 					<li class="collection-header"><h5><%= group.name %></h5></li>				
-					<% group.meetups.first(3).each do |meetup| %>
+					<% group.first(3).each do |meetup| %>
 						<a class="collection-item avatar homepage-meetup-link" 
 						   href="<%= group_meetup_path(group, meetup) %>" 
 						   onclick="dontFollowLinkIfMeetupAddress(event)">
