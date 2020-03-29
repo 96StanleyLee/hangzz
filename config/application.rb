@@ -17,3 +17,20 @@ module FriendHour
     # the framework and any gems in your application.
   end
 end
+
+# hack for foreign key constraint issue
+# per: https://github.com/rails/rails/issues/23422#issuecomment-519091828
+config.generators do |g|
+  g.orm :active_record, primary_key_type: :uuid
+  hacker = Module.new do
+    def options_for_migration
+      ar = Rails.application.config.generators.active_record
+      return super unless %i[belongs_to references].include?(type) && \
+                          ar[:primary_key_type] == :uuid
+
+      { type: :uuid }.merge(super)
+    end
+  end
+  require 'rails/generators/generated_attribute'
+  Rails::Generators::GeneratedAttribute.prepend hacker
+end
