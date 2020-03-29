@@ -95,140 +95,140 @@ location1 = Location.create(address: "30 Water St ,New York, NY 10004",
                             name: "The Dead Rabbit",
                             price_in_dollar_signs: 2,
 							location_type: location_type2,
-							file: "thedeadrabbit.jpeg"
+							file: "thedeadrabbit.jpg"
                             )
 
 location2 = Location.create(address: "372 Lafayette St, New York, NY 10012", 
                             name: "Atla",
                             price_in_dollar_signs: 2,
 							location_type: location_type3,
-							file: "atla.jpeg"
+							file: "atla.jpg"
                             )
 
 location3 = Location.create(address: "310 W 40th St, New York, NY 10018", 
                             name: "Dear Irving",
                             price_in_dollar_signs: 3,
 							location_type: location_type2,
-							file: "dearirving.jpeg"
+							file: "dearirving.jpg"
                             )
 
 location4 = Location.create(address: "722 Nostrand Ave, Brooklyn, NY 11216", 
                             name: "Super Power",
                             price_in_dollar_signs: 2,
 							location_type: location_type2,
-							file: "superpower.jpeg"
+							file: "superpower.jpg"
                             )
 
 location5 = Location.create(address: "348 Wythe Ave, Brooklyn, NY 11249", 
                             name: "Sunday In Brooklyn",
                             price_in_dollar_signs: 2,
 							location_type: location_type3,
-							file: "sundayinbrooklyn.jpeg"
+							file: "sundayinbrooklyn.jpg"
 							)
 
 location6 = Location.create(address: "152-12 Northern Blvd, Flushing, NY 11354", 
                             name: "Jeong Yook NY",
                             price_in_dollar_signs: 2,
 							location_type: location_type3,
-							file: "jeongyookny.jpeg"
+							file: "jeongyookny.jpg"
 							)
 							
 location7 = Location.create(address: "307 5th Ave, New York, NY 10016", 
                             name: "Let's Meat BBQ",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "letsmeatbbq.jpeg"
+							file: "letsmeatbbq.jpg"
 							)			
 
 location8 = Location.create(address: "8 Extra Pl, New York, NY 10003", 
                             name: "Momofuku Ko",
                             price_in_dollar_signs: 3,
                             location_type: location_type3,
-							file: "momofukuko.jpeg"
+							file: "momofukuko.jpg"
 							)
 
 location9 = Location.create(address: "155 W 51st St, New York, NY 10019", 
                             name: "Le Bernardin",
                             price_in_dollar_signs: 3,
                             location_type: location_type3,
-							file: "lebernardin.jpeg"
+							file: "lebernardin.jpg"
 							)
 
 location10 = Location.create(address: "337 3rd Ave, New York, NY 10010", 
                             name: "AWOL Bar & Grill",
                             price_in_dollar_signs: 2,
                             location_type: location_type2,
-							file: "awolbar_grill.jpeg"
+							file: "awolbar_grill.jpg"
 							)
 
 location11 = Location.create(address: "294 3rd Ave, New York, NY 10010", 
                             name: "Ampersand",
                             price_in_dollar_signs: 2,
                             location_type: location_type2,
-							file: "ampersand.jpeg"
+							file: "ampersand.jpg"
 							)
 
 location12 = Location.create(address: "2501 40th Ave, Queens, NY 11101", 
                             name: "House of Thai",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "houseofthai.jpeg"
+							file: "houseofthai.jpg"
 							)
 
 location13 = Location.create(address: "41-17 Crescent St, Long Island City, NY 11101", 
                             name: "Oro",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "oro.jpeg"
+							file: "oro.jpg"
 							)
 							
 location14 = Location.create(address: "46 Bowery, New York, NY 10013", 
                             name: "Joe's Shanghai",
                             price_in_dollar_signs: 1,
                             location_type: location_type3,
-							file: "joesshanghai.jpeg"
+							file: "joesshanghai.jpg"
 							)
 
 location15 = Location.create(address: "21 Mott St, New York, NY 10013", 
                             name: "Shanghai 21",
                             price_in_dollar_signs: 1,
                             location_type: location_type3,
-							file: "shanghai21.jpeg"
+							file: "shanghai21.jpg"
 							)
 
 location16 = Location.create(address: "176 Mulberry St, New York, NY 10013", 
                             name: "Mulberry Street Bar",
                             price_in_dollar_signs: 2,
                             location_type: location_type2,
-							file: "mulberrystreetbar.jpeg"
+							file: "mulberrystreetbar.jpg"
 							)
 
 location17 = Location.create(address: "127 Mulberry St, New York, NY 10013", 
                             name: "Casa Bella",
                             price_in_dollar_signs: 3,
                             location_type: location_type2,
-							file: "casabella.jpeg"
+							file: "casabella.jpg"
 							)
 
 location18 = Location.create(address: "99 Church St, New York, NY 10007", 
                             name: "CUT by Wolfgang Puck",
                             price_in_dollar_signs: 3,
                             location_type: location_type3,
-							file: "cutbywolfgangpuck.jpeg"
+							file: "cutbywolfgangpuck.jpg"
 							)
 
 location19 = Location.create(address: "351 5th Ave, Brooklyn, NY 11215", 
                             name: "Mori",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "mori.jpeg"
+							file: "mori.jpg"
 							)
 
 location20 = Location.create(address: "733 Fulton St, Brooklyn, NY 11217", 
                             name: "Black Forest",
                             price_in_dollar_signs: 2,
                             location_type: location_type2,
-							file: "blackforest.jpeg"
+							file: "blackforest.jpg"
 							)
 
 
@@ -236,7 +236,7 @@ location21 = Location.create(address: "236 W 56th St, New York, NY 10019",
                             name: "Patsy's",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "patsys.jpeg"
+							file: "patsys.jpg"
 							)
 
 
@@ -244,7 +244,7 @@ location22 = Location.create(address: "228 W 52nd St, New York, NY 10019",
                             name: "Gallaghers Steakhouse",
                             price_in_dollar_signs: 4,
                             location_type: location_type3,
-							file: "gallagherssteakhouse.jpeg"
+							file: "gallagherssteakhouse.jpg"
 							)
 
 
@@ -252,7 +252,7 @@ location23 = Location.create(address: "158 E 48th St, New York, NY 10017",
                             name: "The Sea Fire Grill",
                             price_in_dollar_signs: 3,
                             location_type: location_type3,
-							file: "theseafiregrill.jpeg"
+							file: "theseafiregrill.jpg"
 							)
 
 
@@ -260,7 +260,7 @@ location24 = Location.create(address: "352 Bedford Ave, Brooklyn, NY 11249",
                             name: "Rabbithole",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "rabbithole.jpeg"
+							file: "rabbithole.jpg"
 							)
 
 
@@ -268,7 +268,7 @@ location25 = Location.create(address: "81 Washington St, Brooklyn, NY 11201",
                             name: "Westville",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "westville.jpeg"
+							file: "westville.jpg"
 							)
 
 
@@ -276,7 +276,7 @@ location26 = Location.create(address: "38 MacDougal St, New York, NY 10012",
                             name: "Shuka",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "shuka.jpeg"
+							file: "shuka.jpg"
 							)
 
 
@@ -284,7 +284,7 @@ location27 = Location.create(address: "171 Lafayette Ave, Brooklyn, NY 11238",
                             name: "Olea",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "olea.jpeg"
+							file: "olea.jpg"
 							)
 
 
@@ -292,7 +292,7 @@ location28 = Location.create(address: "137 Sullivan St, New York, NY 10012",
                             name: "west~bourne",
                             price_in_dollar_signs: 1,
                             location_type: location_type3,
-							file: "west-bourne.jpeg"
+							file: "west-bourne.jpg"
 							)
 
 
@@ -300,14 +300,14 @@ location29 = Location.create(address: "180 Spring St, New York, NY 10012",
                             name: "Bistro Les Amis",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "bistrolesamis.jpeg"
+							file: "bistrolesamis.jpg"
 							)
 
 location30 = Location.create(address: "359 W Broadway, New York, NY 10013", 
                         name: "Cupping Room Cafe",
                             price_in_dollar_signs: 2,
                             location_type: location_type3,
-							file: "cuppingroomcafe.jpeg"
+							file: "cuppingroomcafe.jpg"
 							)
 
 Meetup.create(location: location1, group: group1, date: Time.new(2020, 04, 05),
