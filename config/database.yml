@@ -22,8 +22,8 @@ test:
 
 production:
   <<: *default
-  adapter: mysql2
-  encoding: utf8
-  database: <%= Rails.application.credentials.mysql.database %>
-  username: <%= Rails.application.credentials.mysql.username %>
-  username: <%= Rails.application.credentials.mysql.password %>
+  # adapter: mysql2
+  # encoding: utf8
+  # database: <%= ENV.fetch("RAILS_MAX_THREADS") %><%= Rails.application.credentials.mysql.database %>
+  # username: <%= Rails.application.credentials.mysql.username %>
+  # password: <%= Rails.application.credentials.mysql.password %>
