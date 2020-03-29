@@ -53,3 +53,16 @@
 	text-align: center;
     width: 100%;
 }
+
+nav .brand-logo{
+	font-family: 'Covered By Your Grace', cursive;
+	font-size: 4.9rem;
+	top: 2px;
+    left: -13px;
+    transform: rotate(-7.3deg);
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.4));
+}
+nav .brand-logo #extra-z{
+	display: inline-block;
+    transform: translate(-33px, -11px) scale(0.6) rotate(-13deg);
+}

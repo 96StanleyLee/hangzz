@@ -4,11 +4,12 @@
     <title>Friend Hour!</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
 
@@ -20,20 +21,17 @@
     <nav class="light-blue darken-3">
       <div class="container">
         <div class="nav-wrapper">
-          <%= link_to 'Friend Hour', root_path, {class: 'brand-logo left'} %>
-            <ul id="nav-mobile" class="right">
-                  <% if logged_in? %>
-                    <li><%= link_to 'Home', user_path(@user) %></li>
-                    <li><%= link_to @user.name, edit_user_path(@user) %></li>
-                  <% elsif request.env['PATH_INFO'] == '/login' %>
-                    <li><%= link_to 'Create New User', register_path %></li>
-                  <% elsif request.env['PATH_INFO'] == '/register' %>
-                    <li><%= link_to 'Login', login_path %></li>  
-                  <% end %>
-            </ul>
-
-      
-
+          <%= link_to 'Hangz<span id="extra-z">z</span>'.html_safe, root_path, class: 'brand-logo left' %>
+          <ul id="nav-mobile" class="right">
+            <% if logged_in? %>
+              <li><%= link_to 'Home', user_path(@user) %></li>
+              <li><%= link_to @user.name, edit_user_path(@user) %></li>
+            <% elsif request.env['PATH_INFO'] == '/login' %>
+              <li><%= link_to 'Create New User', register_path %></li>
+            <% elsif request.env['PATH_INFO'] == '/register' %>
+              <li><%= link_to 'Login', login_path %></li>  
+            <% end %>
+          </ul>
         </div>
       </div>
     </nav>
