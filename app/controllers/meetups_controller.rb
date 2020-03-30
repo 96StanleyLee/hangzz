@@ -16,7 +16,7 @@ class MeetupsController < ApplicationController
 			location_average_differentials[location] = location_average_differential
 		end
 		
-		@locations = location_average_differentials.sort_by{|k,v| v}.first(5)
+		@locations = location_average_differentials.sort_by{|k,v| v}.first(6).shift
 
 		prime_location = @locations.first
 		time = (prime_location[1])

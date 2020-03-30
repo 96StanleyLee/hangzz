@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col s7">
-		<h5>Meetup Details</h5>
+		<h4>Upcoming Hang</h4>
 		<br />
 		<div class="card">
 			<div class="card-image">
@@ -33,10 +33,10 @@
 
 		
 
-		<% if @locations %>
-			<h5>Please select a location:</h5>
+		<% if @alternate_locations %>
+			<h5>Or, select an alternate location:</h5>
 			<%= form_for [@meetup.group, @meetup] do |f| %>
-				<% @locations.each do |location| %>
+				<% @alternate_locations.each do |location| %>
 					<p><label>
 						<%= f.radio_button :location_id, "[#{location[0].id},#{location[1]}]", class: 'with-gap'	%>
 						<span><%= "#{location[0].name} - #{location[1].round} minutes " %></span>
