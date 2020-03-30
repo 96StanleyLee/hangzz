@@ -18,22 +18,18 @@
 				<%= link_to 'Cancel Meetup', '#cancellationModal', class: 'right modal-trigger' %>
 			</div>
 		</div>
-
-
-<div id="cancellationModal" class="modal">
-	<div class="modal-content">
-		<h4>Are you sure?</h4>
-		<p>Cancelling this meetup will delete it immediately - there is no undo.</p>
-		<p>To keep this meetup and *not* cancel, just click away or press escape.</p>
-	</div>
-	<div class="modal-footer">
-		<%= button_to 'Cancel this meetup', group_meetup_path(@meetup.group, @meetup), method: :delete, class: 'modal-close waves-effect waves-green btn-flat inline-form janky-css' %>
-	</div>
-</div>
-
-		
-
+		<div id="cancellationModal" class="modal">
+			<div class="modal-content">
+				<h4>Are you sure?</h4>
+				<p>Cancelling this meetup will delete it immediately - there is no undo.</p>
+				<p>To keep this meetup and *not* cancel, just click away or press escape.</p>
+			</div>
+			<div class="modal-footer">
+				<%= button_to 'Cancel this meetup', group_meetup_path(@meetup.group, @meetup), method: :delete, class: 'modal-close waves-effect waves-green btn-flat inline-form janky-css' %>
+			</div>
+		</div>
 		<% if @alternate_locations %>
+			<br />
 			<h5>Or, select an alternate location:</h5>
 			<%= form_for [@meetup.group, @meetup] do |f| %>
 				<% @alternate_locations.each do |location| %>
@@ -42,12 +38,10 @@
 						<span><%= "#{location[0].name} - #{location[1].round} minutes " %></span>
 					</label></p>
 				<% end %>
-				<%= f.submit "Meetup!"%>
+				<button class="btn waves-effect waves-light" type="submit" name="action">Change location</button>
 			<% end %>
-
 		<% end %>
 	</div>
-	
 	<div class="col s1"></div>
 	<div class="col s4">
 		<h5>Who's coming?</h5>

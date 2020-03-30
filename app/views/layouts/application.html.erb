@@ -66,9 +66,9 @@
     <script>
       $(document).on('turbolinks:load', function(){
         $('select').formSelect();
-        var elems = document.querySelectorAll('.datepicker');
-        var options = {format: 'yyyy-mm-dd', onClose: datePickerClosed}
-        M.Datepicker.init(elems, options);
+        var datepickerElements = document.querySelectorAll('.datepicker');
+        var options = {format: 'yyyy-mm-dd', onClose: datePickerClosed, minDate: new Date()}
+        M.Datepicker.init(datepickerElements, options);
         $('.materialboxed').materialbox();
         M.Modal._count = 0;
         $('.modal').modal();

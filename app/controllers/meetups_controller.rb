@@ -16,15 +16,16 @@ class MeetupsController < ApplicationController
 			location_average_differentials[location] = location_average_differential
 		end
 		
-		@locations = location_average_differentials.sort_by{|k,v| v}.first(6).shift
-
-		prime_location = @locations.first
+		locations = location_average_differentials.sort_by{|k,v| v}.first(6)
+		prime_location = locations.shift
+		@alternate_locations = locations
 		time = (prime_location[1])
 		@meetup = Meetup.create(
 			group: group, 
 			location: prime_location[0], 
 			date: params[:meetup][:date], 
-			average_additional_commute_time: time
+			average_additional_commute_time: time,
+			status: 1
 			)
 		render :show
 	end
@@ -43,7 +44,7 @@ class MeetupsController < ApplicationController
 		set_instance
 		@meetup.slug = nil
 		location = JSON.parse(params[:meetup][:location_id])
-		@meetup.update(location_id: location[0], average_additional_commute_time: location[1], status: 1)
+		@meetup.update(location_id: location[0], average_additional_commute_time: location[1])
 		redirect_to group_meetup_path(@meetup.group, @meetup)
 	end 
 
