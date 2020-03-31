@@ -15,4 +15,9 @@ class Group < ApplicationRecord
 	def meetups
 		Meetup.where('status = 1 AND group_id = ?', self.id)
 	end
+
+	def future_meetups
+		self.meetups.where('date >= ?', Time.now.strftime('%Y-%m-%d'))
+	end
+
 end

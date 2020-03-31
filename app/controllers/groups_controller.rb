@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
 	def show
 		set_instance
-		@future_meetups = @group.meetups.where('date > ?', Time.now)
+		@future_meetups = @group.future_meetups
 	end
 
 	private
