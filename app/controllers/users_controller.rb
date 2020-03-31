@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 		@user = User.new(strong_params(:email, :password, :name))
 		if @user.save
 			session[:user_id] = @user.id		
-			redirect_to root_path
+			redirect_to edit_user_path(@user)
 		else
 			flash[:alert] = @user.errors.full_messages
 			redirect_to new_user_path
